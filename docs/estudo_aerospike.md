@@ -130,44 +130,7 @@ gera os arquivos e o `absctl restore` devolve os dados ao banco.
 
 ---
 
-## 6. Perguntas que a turma pode fazer (e respostas curtas)
-
-**Por que chave-valor para reservas?**
-Porque a gente sempre procura a reserva pelos mesmos dados (sala, data e horário),
-que formam uma chave. Acesso direto, sem JOIN.
-
-**E se duas pessoas tentarem reservar a mesma sala ao mesmo tempo?**
-A gravação usa `POLICY_EXISTS_CREATE`, que só cria se a chave não existir. Só uma
-das duas consegue; a outra recebe o aviso de que já está reservada.
-
-**Para que serve o TTL?**
-Para dados com prazo de validade. Aqui, a reserva provisória some sozinha em 60 s se
-ninguém confirmar. Depois de confirmada, não expira mais.
-
-**Como o banco sabe quantas reservas há por sala sem contar tudo?**
-Um contador atômico: cada reserva confirmada soma 1 direto no banco (`increment`).
-
-**Por que precisou criar índice?**
-Porque, por padrão, só se busca pela chave. Para achar "reservas da Ana" sem
-varrer tudo, criamos um índice secundário no campo `responsavel`.
-
-**O que acontece se o servidor cair?**
-Num cluster com réplicas, outro nó assume. No nosso projeto há só um nó, então o
-que protege os dados é o backup.
-
-**Qual a diferença para o banco relacional?**
-Sem tabelas com relacionamentos, sem JOIN, sem chave estrangeira. Em troca, é muito
-rápido para acessos por chave e escala bem.
-
-**O que é namespace? E set?**
-Namespace é como o "banco de dados" (nós usamos `test`). Set é como a "tabela".
-
-**Por que a edição Community?**
-É gratuita e suficiente para estudo. Tem limites (por exemplo, até 8 nós).
-
----
-
-## 7. Glossário
+## 6. Glossário
 
 - **Chave-valor:** guarda dados associados a uma chave, e a consulta principal é por ela.
 - **Registro:** um conjunto de dados com uma chave. **Bin:** um campo do registro.
@@ -181,7 +144,7 @@ Namespace é como o "banco de dados" (nós usamos `test`). Set é como a "tabela
 
 ---
 
-## 8. Fontes (abra e confira)
+## 7. Fontes (abra e confira)
 
 - Armazenamento híbrido: https://aerospike.com/docs/architecture/storage
 - Limites do servidor: https://aerospike.com/docs/guide/limitations
