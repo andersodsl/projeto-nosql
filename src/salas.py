@@ -1,4 +1,3 @@
-"""CRUD das salas e laboratórios (set 'salas')."""
 import aerospike
 from aerospike import exception as ex
 
@@ -49,7 +48,6 @@ def alterar_capacidade(sala, capacidade):
 
 
 def remover(sala):
-    # O Aerospike não tem chave estrangeira: quem protege a integridade é a aplicação.
     reservas, _ = consultar_por_campo(SET_RESERVAS, 'sala', sala)
     if reservas:
         print(f'Não é possível remover: a sala tem {len(reservas)} reserva(s).')

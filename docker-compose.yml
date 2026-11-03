@@ -1,9 +1,3 @@
-# Sobe o banco Aerospike (Community Edition) com um comando:
-#   docker compose up -d
-#
-# Os servicos com profile "tools" so rodam sob demanda:
-#   docker compose run --rm tools asadm -h aerospike -e "show config namespace"
-#   docker compose run --rm absctl absctl backup -h aerospike:3000 -n test -d /data/backup/dump1
 services:
   aerospike:
     image: aerospike/aerospike-server

@@ -1,4 +1,3 @@
-"""Sistema de agendamento de salas e laboratórios (menu no terminal)."""
 import db
 import reservas
 import salas

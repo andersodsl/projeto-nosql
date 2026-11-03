@@ -1,10 +1,3 @@
-"""Mede o tempo de gravar e ler muitos registros no Aerospike.
-
-Compara jeitos de usar o banco (ajuste do lado da aplicação):
-  1) sequencial: um registro por vez, esperando cada resposta
-  2) paralelo: várias threads enviando ao mesmo tempo
-  3) em lote: uma única chamada lendo todos os registros (só leitura)
-"""
 import time
 from concurrent.futures import ThreadPoolExecutor
 
@@ -58,9 +51,9 @@ def em_lote():
     chaves = [chave(i) for i in range(TOTAL)]
     inicio = time.perf_counter()
     try:
-        if hasattr(client, 'batch_read'):      # clientes novos
+        if hasattr(client, 'batch_read'):      
             client.batch_read(chaves)
-        else:                                  # clientes mais antigos
+        else:                                  
             client.get_many(chaves)
     except (AttributeError, TypeError, ex.AerospikeError):
         return None

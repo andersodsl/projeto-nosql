@@ -1,5 +1,3 @@
-"""CRUD das reservas (set 'reservas') e recursos próprios do Aerospike:
-TTL (reserva provisória), contador atômico e índice secundário."""
 import aerospike
 from aerospike import exception as ex
 
@@ -44,7 +42,6 @@ def reservar(sala, data, horario, responsavel, provisoria=False):
     if provisoria:
         print(f'Reserva provisória criada! Expira em {TTL_PROVISORIA} segundos se não for confirmada.')
     else:
-        # Contador atômico: o próprio banco soma, sem ler e regravar.
         client.increment(chave_contador(sala), 'confirmadas', 1, meta=SEM_EXPIRACAO)
         print('Reserva confirmada!')
 
@@ -85,7 +82,7 @@ def confirmar(sala, data, horario):
     client.put(
         chave_reserva(sala, data, horario),
         {'status': 'confirmada'},
-        meta=SEM_EXPIRACAO,  # confirmada = não expira mais
+        meta=SEM_EXPIRACAO, 
         policy={'exists': aerospike.POLICY_EXISTS_UPDATE},
     )
     client.increment(chave_contador(sala), 'confirmadas', 1, meta=SEM_EXPIRACAO)
@@ -131,7 +128,6 @@ def do_responsavel(nome):
 
 
 def ocupacao():
-    """Reservas confirmadas por sala, lidas dos contadores."""
     lista = listar_set(SET_SALAS)
     if not lista:
         print('Nenhuma sala cadastrada.')

@@ -1,6 +1,14 @@
+# Python
 __pycache__/
-*.pyc
-venv/
+*.py[cod]
 .venv/
-backup/*
-!backup/.gitkeep
+venv/
+
+# Variáveis e configurações locais
+.env
+
+# Backups locais
+backup/
+
+# Material interno da apresentação
+docs/roteiro_apresentacao.md

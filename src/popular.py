@@ -1,4 +1,3 @@
-"""Cadastra salas e reservas de exemplo, para as demonstrações."""
 import db
 import reservas
 import salas

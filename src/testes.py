@@ -1,11 +1,3 @@
-"""Testes automáticos da aplicação, rodando contra o Aerospike de verdade.
-
-Uso:
-  py src/testes.py          testes rápidos
-  py src/testes.py --ttl    inclui o teste de expiração (espera cerca de 65 s)
-
-Cada linha mostra [OK] ou [FALHOU]. No final, um resumo.
-"""
 import io
 import sys
 import time
@@ -25,7 +17,6 @@ resultados = []
 
 
 def silencioso(funcao, *args, **kwargs):
-    """Roda uma função e devolve o que ela imprimiu (sem mostrar na tela)."""
     saida = io.StringIO()
     with redirect_stdout(saida):
         funcao(*args, **kwargs)
@@ -38,7 +29,6 @@ def checar(nome, condicao):
 
 
 def registro(chave):
-    """Devolve (metadados, bins) ou None se o registro não existe."""
     try:
         _, meta, bins = client.get(chave)
         return meta, bins
