@@ -1,20 +1,3 @@
-# Material de estudo: Aerospike
-
-Este arquivo serve para **estudar** o banco antes de apresentar. Ele junta o que
-a documentação e outras fontes dizem (as fontes estão no final) e liga cada ponto
-ao nosso projeto.
-
-**Importante:** o professor avisou que copiar o trabalho inteiro de assistentes de IA
-reduz a nota. Por isso, use este material para entender e depois **explique com as
-suas palavras**, abrindo as fontes para conferir. Quem apresenta precisa saber
-responder perguntas, e isso só vem de ter estudado.
-
-Marcas usadas: **[doc]** = documentação oficial do Aerospike; **[vendor]** = página
-comercial da empresa (pode ser propaganda); **[terceiros]** = site de comparação,
-não medimos nada disso; **[conferir]** = vale checar antes de afirmar na apresentação.
-
----
-
 ## 1. O que é o Aerospike 
 
 Banco de dados NoSQL do tipo **chave-valor**, distribuído (funciona em vários
