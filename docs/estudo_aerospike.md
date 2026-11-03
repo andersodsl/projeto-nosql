@@ -15,7 +15,7 @@ não medimos nada disso; **[conferir]** = vale checar antes de afirmar na aprese
 
 ---
 
-## 1. O que é o Aerospike (em 30 segundos)
+## 1. O que é o Aerospike 
 
 Banco de dados NoSQL do tipo **chave-valor**, distribuído (funciona em vários
 servidores ligados em cluster), criado para ser muito rápido com muitos dados.
